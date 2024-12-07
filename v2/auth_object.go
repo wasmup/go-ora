@@ -459,7 +459,7 @@ func encryptPassword(password, key []byte, padding bool) (string, error) {
 	buff1 := make([]byte, 0x10)
 	_, err := rand.Read(buff1)
 	if err != nil {
-		return "", nil
+		return "", err
 	}
 	buffer := append(buff1, password...)
 	return encryptSessionKey(padding, key, buffer)
